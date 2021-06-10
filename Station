@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+/**
+ *  Created by Alicia on 6/7/2021.
+ *  This program requests user to select one of the four different gas types:
+ *  Regular, Mid grade, Premium or Diesel.
+ */
+
+public class Gas {
+
+    public static class Main {
+
+        public static void main(String[] args) {  // main method is a starting point of the program.
+
+            String greetings = "Welcome to Alicia's Gas Station! ";
+            final double PRICE_REGULAR = 2.79;
+            final double PRICE_MID_GRADE = 3.00;
+            final double PRICE_PREMIUM = 3.50;
+            final double PRICE_DIESEL = 4.00;
+
+            displayMessage(greetings);
+            System.out.println("__________________________________");
+            System.out.println();
+            calculateGasPrice(PRICE_REGULAR, PRICE_MID_GRADE, PRICE_PREMIUM, PRICE_DIESEL);
+        }
+
+        public static void displayMessage(String greetings) {
+
+            System.out.println(greetings);
+        }
+
+        public static void calculateGasPrice(double PRICE_REGULAR, double PRICE_MID_GRADE, double PRICE_PREMIUM, double PRICE_DIESEL) {
+
+            String type = null;
+            int gallons = 0;
+            double g_Price = 0;
+
+            Scanner in = new Scanner(System.in);
+            try {
+                // Requesting user for input
+                System.out.print(" Please select gas types: Regular, Mid Grade, Premium or Diesel. ");
+
+                type = in.nextLine();
+                System.out.print(" How many gallons? ");
+                gallons = in.nextInt();
+
+                // Output of user response.
+                System.out.printf(" You've selected %s gas, and %d gallons. Your total is = %f", type, gallons, g_Price);
+
+            } catch (Exception e) {
+                System.out.println(" Please enter only: Regular, Mid Grade, Premium or Diesel. ");
+            }
+
+            while (type != ""){
+                
+                if  (type.equals("Regular")) {
+                    g_Price = gallons * PRICE_REGULAR;
+                    System.out.println(g_Price);
+                    break;
+                } 
+                else if (type.equals("Mid Grade")) {
+                    g_Price = gallons * PRICE_MID_GRADE;
+                    System.out.println(g_Price);
+                    break;
+                } 
+                else if (type.equals("Premium")) {
+                    g_Price = gallons * PRICE_PREMIUM;
+                    System.out.println(g_Price);
+                    break;
+                } 
+                else if (type.equals("Diesel")) {
+                    g_Price = gallons * PRICE_DIESEL;
+                    System.out.println(g_Price);
+                    break;
+                } 
+                else {
+                    System.out.println("Invalid selection. Please try again.");
+                }
+            }
+            
+        }
+    }   
+}
+
